@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c1d53aba1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/users.css">
+
+    <title>Data Warehouse</title>
+</head>
+<body>
+    <div id="background-img"> 
+    <!--Navbar-->
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Data Warehouse</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="contacts.html"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
+                  <li><a href="companies.html"><h1 class="nav-font">Companies</h1></a></li>
+                  <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
+                  <li><a href="region.html"><h1 class="nav-font">Region/City</h1></a></li>
+                  <script>
+                    document.getElementById("demo").onmouseover = function() {mouseOver()};
+                    document.getElementById("demo").onmouseout = function() {mouseOut()};
+                    document.getElementById("demo").onmouseleave = function() {mouseLeave()};
+                    
+                    function mouseOver() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    
+                    function mouseOut() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    function mouseLeave() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    </script>
+                  
+
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+  
+    <main class="main-users">
+<!--Create user-->
+<section class="form">
+    <h1 class="create-title">Create User</h1>
+    <form action="" id='create-form' method="POST">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+            <label for="first-name">Last Name</label>
+            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+            <label for="first-name">Email</label>
+            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Example: name@gmail.com" required>
+        </div>
+        <div class="form-group">
+            <label for="first-name">Profile</label>
+            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Example: Admin or Restricted" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Repeat Password</label>
+            <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Repeat Password" required>
+          </div>
+        <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Create">
+      </form>
+  </section>
+</div>
+
+    </main>
+    <script src="./src/js/scripts/users.js"></script>
+</body>
+</html>

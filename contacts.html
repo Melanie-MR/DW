@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/contacts.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>Data Warehouse</title>
+</head>
+<body>
+    <div id="background-img">
+        <!--Navbar-->
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Data Warehouse</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
+                      <li><a href="companies.html"><h1 class="nav-font">Companies</h1></a></li>
+                      <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
+                      <li><a href="region.html"><h1 class="nav-font">Region/City</h1></a></li>
+                      <script>
+                        document.getElementById("demo").onmouseover = function() {mouseOver()};
+                        document.getElementById("demo").onmouseout = function() {mouseOut()};
+                        document.getElementById("demo").onmouseleave = function() {mouseLeave()};
+                        
+                        function mouseOver() {
+                          document.getElementById("demo").style.color = "9d9d9d";
+                        }
+                        
+                        function mouseOut() {
+                          document.getElementById("demo").style.color = "9d9d9d";
+                        }
+                        function mouseLeave() {
+                          document.getElementById("demo").style.color = "9d9d9d";
+                        }
+                        </script>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </header>
+    
+    <main>
+        <h1>Contacts</h1>
+        <section id='sec-search'>
+            <section id='contacts-table'>
+                <label for="search-input"></label>
+                <input type="text" id='search-bar' placeholder='Search'>
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <div class='btns-add-del'>
+                    <button type="button" class="add-contact " id='myBtn'>Add contact</button>
+                </div>
+        </section>      
+<!--Table-->
+    
+        <div class="container mt-5 px-2">
+    
+            <div class="table-responsive">
+            <table class="table table-responsive table-borderless">
+                
+              <thead>
+                <tr class="bg-light">
+                  <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+                  <th scope="col" width="20%">Contact</th>
+                  <th scope="col" width="10%">Country/Region</th>
+                  <th scope="col" width="20%">Companie</th>
+                  <th scope="col" width="20%">Position</th>
+                  <th scope="col" width="5%">Interest (%)</th>
+                  <th scope="col" class="text-end" width="20%">Actions</th>
+
+                </tr>
+              </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><input class="form-check-input" type="checkbox"></th>
+              <td>Karol G</td>
+              <td>Argentina</td>
+              <td><span class="ms-1">Globan</span></td>
+              <td>Manager</td>
+              <td>20%</td>
+              <td class="text-end"><i class="fa fa-ellipsis-h  ms-2"></i></td>
+            </tr>
+            
+            <tr>
+                <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                <td>Harrison Ford</td>
+                <td>Argentina</td>
+                <td><span class="ms-1">Globan</span></td>
+                <td>Manager</td>
+                <td>20%</td>
+                <td class="text-end"><i class="fa fa-ellipsis-h  ms-2"></i></td>
+              </tr>
+            
+            
+              <tr>
+                <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                <td>Britney Spears</td>
+                <td>US</td>
+                <td><span class="ms-1">Globan</span></td>
+                <td>Manager</td>
+                <td>20%</td>
+                <td class="text-end"><i class="fa fa-ellipsis-h  ms-2"></i></td>
+              </tr>
+            
+            
+              <tr>
+                <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                <td>Pedro Perez</td>
+                <td>Venezuela</td>
+                <td><span class="ms-1">Globan</span></td>
+                <td>Manager</td>
+                <td>20%</td>
+                <td class="text-end"><i class="fa fa-ellipsis-h  ms-2"></i></td>
+              </tr>
+            
+            
+              <tr>
+                <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                <td>Rosalia</td>
+                <td>Argentina</td>
+                <td><span class="ms-1">Globan</span></td>
+                <td>Manager</td>
+                <td>20%</td>
+                <td class="text-end"><i class="fa fa-ellipsis-h  ms-2"></i></td>
+              </tr>
+          </tbody>
+        </table>
+          
+          </div>
+            
+        </div>
+    
+    </main>
+<!-- Modal -->
+
+<div id="myModal" class="modal modal-xl">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header"> 
+            <h1 class="modal-title" id="staticBackdropLabel">New Contact</h1>
+            <span class="close">&times;</span> 
+        </div>  
+        <div class="modal-body">
+            <form action="" class="form-row">
+                <div class="form-contacts">
+                    <label for="first-name">First Name <span id="asterisk" >*</span></label>
+                    <input type="input" autocomplete="off" name="user" id="first-name" class="input-width" required>
+                </div>
+                <div class="form-contacts">
+                    <label for="last-name">Last Name <span id="asterisk" >*</span></label>
+                    <input type="input" autocomplete="off" name="user" id="last-name" class="input-width" required>
+                </div>
+                <div class="form-contacts">
+                    <label for="position">Position <span id="asterisk" >*</span></label>
+                    <input type="input" autocomplete="off" name="position" id="last-name" class="input-width" required>
+                </div>
+                <div class="form-contacts">
+                    <label for="email">Email <span id="asterisk" >*</span></label>
+                    <input type="email" autocomplete="off" name="email" id="email" class="input-width" required>
+                </div>
+                <div class="form-contacts">
+                    <label for="first-name">Company <span id="asterisk" >*</span></label>
+                    <input type="input" autocomplete="off" name="company" id="company" class="input-width" required>
+                </div>
+            </form>
+            <div class="form-row">
+                <form>
+                    <!--Regions/Country/Cities-->
+                        <div class="container mt-5 px-2">
+                            <div class=' mt-5'>
+                                <div class='container'>
+                                    <!-- country -->
+                                    <div class='row w3-margin-bottom'>
+                                        <div class='col-md-1 col-xs-1'>
+                                        <p><b>Country</b></p>
+                                        </div>
+                                        <div class='col-md-3 col-xs-3'>
+                                            <select id="country" class='form-control selectpicker' data-live-search='true'><option value="">-- Country --</option></select>
+                                        </div>
+                                    </div> <!-- end country row -->
+                                    <!-- region -->
+                                    <div class='row w3-margin-bottom'>
+                                        <div class='col-md-1 col-xs-1'>
+                                        <p><b>Region</b></p>
+                                        </div>
+                                        <div class='col-md-3 col-xs-3'>
+                                            <select id="region" class='form-control'><option value="">-- Region --</option></select>
+                                        </div>
+                                    </div> <!-- end region row -->
+                                    <!-- city -->
+                                    <div class='row w3-margin-bottom'>
+                                        <div class='col-md-1 col-xs-1'>
+                                        <p><b>City</b></p>
+                                        </div>
+                                        <div class='col-md-3 col-xs-3'>
+                                            <select id="city" class='form-control'><option value="">-- City --</option></select>
+                                        </div>
+                                    </div> <!-- end city row -->
+                                </div> <!-- end container -->
+                            </div> <!-- end jumbotron -->
+                        </div>
+
+                    <div class="form-contacts">
+                        <label for="address">Address <span id="asterisk" >*</span></label>
+                        <input type="input" autocomplete="off" name="address" id="address" class="input-width" placeholder="Company's name" required>
+                    </div>
+                    <div class="form-contacts">
+                        <label for="interest">Interest<span id="asterisk" >*</span></label>    
+                        <select id="interest" class=''>
+                            <option value="">0%</option>
+                            <option value="">25%</option>
+                            <option value="">50%</option>
+                            <option value="">100%</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Create">
+        </div>         
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save Contact</button>
+    </div>  
+    </div>    
+</div>
+    
+         
+    
+
+  <!-- Modal BOOTSTRAP 
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+             <!--  
+            
+        
+                <section id='pop-up-contact'>
+                    <div class='pop-up'>
+                        <h2 id='pop-up-title'>New Contact</h2>
+                        <div class='primary-info'>
+                            <div class='tableDiv'>
+                                <label for="first-name">First Name</label>
+                                <input type="text" name="first-name" id="input-first-name" required>
+                            </div>
+                            
+                            <div class='tableDiv'>
+                                <label for="last-name">Last Name</label>
+                                <input type="text" name="last-name" id="input-last-name" required>
+                            </div>
+                            
+                            <div class='tableDiv'>
+                                <label for="position">Position</label>
+                                <input type="text" name="position" id="input-position" required>
+                            </div>
+        
+                            <div class='tableDiv'>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="input-email">
+                            </div>
+        
+                            <div class='tableDiv'>
+                                <label for="company">Company</label>
+                                <select name="company" id="select-company" required>
+                                    <option value="" disabled selected>Select Company</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='secondary-info'>
+                            <div class='tableDiv'>
+                                <label for="regions">Region</label>
+                                <select name="regions" id="regions">
+                                    <option value="" disabled selected>Select Region</option>
+                                </select>
+                            </div>
+                            
+                            <div class='tableDiv'>
+                                <label for="countries">Country</label>
+                                <select name="countries" id="countries" disabled>
+                                    <option value="" disabled selected>Select Country</option>
+                                </select>
+                            </div>
+                            
+                            <div class='tableDiv'>
+                                <label for="cities">City</label>
+                                <select name="cities" id="cities" disabled>
+                                    <option value="" disabled selected>Select City</option>
+                                </select>
+                            </div>
+        
+                            <div class='tableDiv'>
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="input-address">
+                            </div>
+        
+                            <div class='tableDiv'>
+                                <label for="interest">Interest</label>
+                                <select name="interest" id="input-interest">
+                                    <option value="0" selected>0%</option>
+                                    <option value="25" >25%</option>
+                                    <option value="50" >50%</option>
+                                    <option value="75" >75%</option>
+                                    <option value="100" >100%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='tertiary-info' id='tertiary-info'>
+                            <div class='channel-info-row'>
+                                <div class='tableDiv'>
+                                    <label for="channel">Contact Channel</label>
+                                    <select name="channel" class="input-channel">
+                                    </select>
+                                </div>
+                                <div class='tableDiv'>
+                                    <label for="account">User account</label>
+                                    <input type="text" name="account" class="input-account">
+                                </div>
+                                <div class='tableDiv'>
+                                    <label for="preferences">Preferences</label>
+                                    <select name="preferences" class="input-preferences">
+                                        <option value="No preferences" selected>No preferences</option>
+                                        <option value="Prefered Channel">Prefered Channel</option>
+                                        <option value="No molestar" >Do not insist</option>
+                                    </select>
+                                </div>
+                                <button id='btn-add-channel' disabled>Add Channel</button>
+                            </div>
+                        </div>
+        
+                        <div class='btn-container'>
+                            <button type="submit" id='submit-pop-up'>Send</button>
+                            <button id='cancel-pop-up'>Cancel</button>
+                        </div>
+                        
+                    </div>
+                </section>--> 
+
+    <!--arreglas link script-->
+    <script src='js/scripts/contacts.js'></script>
+    <script src="js\scripts\region.js"></script>
+</body>
+</html>

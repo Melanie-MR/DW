@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c1d53aba1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/companies.css">
+
+    <title>Data Warehouse</title>
+</head>
+<body>
+    <div id="background-img"> 
+    <!--Navbar-->
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Data Warehouse</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="contacts.html"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
+                  <li><a href="#"><h1 class="nav-font">Companies</h1></a></li>
+                  <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
+                  <li><a href="region.html"><h1 class="nav-font">Region/City</h1></a></li>
+                  <script>
+                    document.getElementById("demo").onmouseover = function() {mouseOver()};
+                    document.getElementById("demo").onmouseout = function() {mouseOut()};
+                    document.getElementById("demo").onmouseleave = function() {mouseLeave()};
+                    
+                    function mouseOver() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    
+                    function mouseOut() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    function mouseLeave() {
+                      document.getElementById("demo").style.color = "9d9d9d";
+                    }
+                    </script>
+                  
+
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <main>
+      <h1>Companies</h1>
+
+                    <div class='btns-add-del'>
+                        <button id='add-contact'>Add</button>
+                    </div>
+                 
+      
+      <div class="container mt-5 px-2">
+
+          <div class="table-responsive">
+          <table class="table table-responsive table-borderless">
+              
+            <thead>
+              <tr class="bg-light">
+                <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+                <th scope="col" width="5%">#</th>
+                <th scope="col" width="20%">Name</th>
+                <th scope="col" width="10%">Country</th>
+                <th scope="col" width="20%">Address</th>
+                <th scope="col" class="text-end" width="20%">Actions</th>
+              </tr>
+            </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox"></th>
+            <td>12</td>
+            <td>1 Oct, 21</td>
+            <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">Paid</span></td>
+            <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> Althan Travis</td>
+            <td class="text-end"><span class="fw-bolder">$0.99</span> <button>Edit</button><button>Delete</button></td>
+          </tr>
+          
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox"></th>
+            <td>14</td>
+            <td>12 Oct, 21</td>
+            <td><i class="fa fa-dot-circle-o text-danger"></i><span class="ms-1">Failed</span></td>
+            <td><img src="https://i.imgur.com/nmnmfGv.png" width="25"> Tomo arvis</td>
+            <td class="text-end"><span class="fw-bolder">$0.99</span> <button>Edit</button><button>Delete</button></td>
+          </tr>
+          
+          
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox"></th>
+            <td>17</td>
+            <td>1 Nov, 21</td>
+            <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">Paid</span></td>
+            <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> Althan Travis</td>
+            <td class="text-end"><span class="fw-bolder">$0.99</span> <button>Edit</button><button>Delete</button></td>
+          </tr>
+          
+          
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox"></th>
+            <td>90</td>
+            <td>19 Oct, 21</td>
+            <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">Paid</span></td>
+            <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> Travis head</td>
+            <td class="text-end"><span class="fw-bolder">$0.99</span> <button>Edit</button><button>Delete</button></td>
+          </tr>
+          
+          
+          <tr>
+            <th scope="row"><input class="form-check-input" type="checkbox"></th>
+            <td>12</td>
+            <td>1 Oct, 21</td>
+            <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">Paid</span></td>
+            <td><img src="https://i.imgur.com/nmnmfGv.png" width="25"> Althan Travis</td>
+            <td class="text-end"><span class="fw-bolder">$0.99</span> <button>Edit</button><button>Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+        
+        </div>
+          
+      </div>
+
+    </main>
+    <!--arreglas link script-->
+    <script src='js/scripts/companies.js'></script>
+</body>
+</html>
