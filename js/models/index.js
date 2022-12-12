@@ -4,12 +4,10 @@ const Countries = require("./countries");
 const Cities = require("./cities");
 const Companies = require("./companies");
 const Contacts = require("./contacts");
-const Channels = require("./channels");
-const ContactsHasChannels = require("./contactsHasChannels");
 
 Regions.hasMany(Countries, {
     foreignKey: "region_id"
-});
+}); 
 Countries.belongsTo(Regions, {
     foreignKey: "region_id",
 });
@@ -45,9 +43,6 @@ Contacts.belongsTo(Companies, {
     foreignKey: "companies_id",
 });
 
-Contacts.belongsToMany(Channels,{
-    through: ContactsHasChannels,
-});
 
 
 module.exports = {
@@ -56,7 +51,5 @@ module.exports = {
     Countries,
     Cities,
     Companies,
-    Contacts,
-    Channels,
-    ContactsHasChannels,
+    Contacts
 };

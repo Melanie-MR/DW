@@ -1,6 +1,7 @@
 const {DataTypes} = require("sequelize");
 const sequelize = require("../config/connection");
 
+
 const Contacts = sequelize.define('contacts', {
     firstName: {
         field:"firstName",
@@ -46,5 +47,6 @@ const Contacts = sequelize.define('contacts', {
     tableName: "contacts",
     underscored: true,
 })
+
 
 module.exports = Contacts;

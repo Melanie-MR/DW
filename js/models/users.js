@@ -1,44 +1,45 @@
 const {DataTypes} = require("sequelize");
-const sequelize = require('../config/connection');
-const Contacts = require("./contacts");
-const Channels = require("./channels");
-const ContactsHasChannels = sequelize.define("contacts_has_channels",{
-    channel_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        field:"channel_id",
-        references: {
-            model:Channels,
-            key:"id",
-        }
-    },
-    contact_id: {
-        type:DataTypes.INTEGER,
-        allowNull: false,
-        field:"contact_id",
-        references:{ 
-            model:Contacts,
-            key: "id",
-        }
-    },
-    account: {
+const sequelize = require("../config/connection");
+
+
+const Users = sequelize.define('users',{
+    first_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    preferences: {
+    last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    isAdmin: {
+        field:"isAdmin",
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     isActive: {
-        field:"isActive",
+        field:"isAdmin",
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
-    },
+    }
+    
 },{
-    tableName: "contacts_has_channels",
+    tableName:"users",
     underscored: true,
-    timestamps: false,
 });
 
-module.exports = ContactsHasChannels;
+module.exports = Users;

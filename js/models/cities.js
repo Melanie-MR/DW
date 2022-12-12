@@ -21,4 +21,5 @@ const Cities = sequelize.define('cities',{
     underscored: true,
 });
 
+
 module.exports = Cities;
