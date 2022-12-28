@@ -1,16 +1,16 @@
 document.querySelector('#login-form').addEventListener('submit', async (ev)=>{
     ev.preventDefault();
 
-    const user = document.getElementById('user').value;
+    const username = document.getElementById('user').value;
     const password = document.getElementById('password').value;
     const headers = new Headers();
     headers.append('Content-Type',"application/json");
 
     //connection with backend (server.js)
     try{
-        const responseLogin = await fetch('http://localhost:5503/login', {
+        const responseLogin = await fetch('http://localhost:3000/login', {
             method: 'POST',
-            body: JSON.stringify({user, password}),
+            body: JSON.stringify({username, password}),
             headers
         });
 

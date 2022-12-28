@@ -1,33 +1,62 @@
-const token = localStorage.getItem('token');
-const headers = new Headers();
-headers.append('Accept','application/json');
-headers.append('Content-Type','application/json');
-headers.append('Authorization', `Bearer ${token}`);
-headers.append('Access-Control-Allow-Origin', '*');
+const inputFirstName = document.getElementById('first-name');
+const inputLastName = document.getElementById('last-name');
+const inputEmail = document.getElementById('email');
+const inputProfile = document.getElementById('profile');
+const inputUsername = document.getElementById('username');
+const inputPassword = document.getElementById('password');
+const inputRepPassword = document.getElementById('repeat-password');
+const submitBtn = document.getElementById('submit-btn');
 
 
-const tableBody = document.getElementById('tableData');
-const popUpUserWindow = document.getElementById('pop-up-user');
-const addUserBtn = document.getElementById('add-user');
-const popUpTitle = document.getElementById('pop-up-title');
-const submitPopUp = document.getElementById('submit-pop-up');
-const cancelPopUp = document.getElementById('cancel-pop-up');
+document.querySelector('#create-form').addEventListener('submit', async (ev)=>{
+    ev.preventDefault();
 
-const inputFirstName = document.getElementById('input-first-name');
-const inputLastName = document.getElementById('input-last-name');
-const inputEmail = document.getElementById('input-email');
-const inputProfile = document.getElementById('input-profile');
-const inputUsername = document.getElementById('input-username');
-const inputPassword = document.getElementById('input-password');
-const inputConfPassword = document.getElementById('input-confirm-password');
+    const firstname = inputFirstName.value;
+    const lastname = inputLastName.value;
+    const email = inputEmail.value;
+    const profile = inputProfile.checked;
+    const username = inputUsername.value;
+    const password = inputPassword.value;
+    const passwordRepeat = inputRepPassword.value;
+
+    const token = localStorage.getItem('token');
+    const headers = new Headers();
+    headers.append('Content-Type',"application/json");
+    headers.append('Authorization', `Bearer ${token}`);
+    headers.append('Access-Control-Allow-Origin', '*');
+
+
+    //connection with backend (server.js)
+    try{
+        const response = await fetch('http://localhost:3000/signup', {
+            method: 'POST',
+            body: JSON.stringify({firstname, lastname, email, profile, username, password}),
+            headers
+        });
+
+        const responseObject = await response.json();
+
+        if(!response.ok){
+            alert(responseObject.msg);
+        } else {
+            alert(responseObject.msg);
+        }
+    } catch (error){
+        alert("something is wrong, try again later");
+        console.error(error);
+    }
+})
+
+
+/*
 
 let usersArr = [];
 
 class Users {
-    async getUsers() {
+    async getUsers() { 
         try {
 
-            /* let result = await fetch('users.json');  */
+            //let result = await fetch('users.json');  
             let result = await fetch('http://localhost:5503/users', {
                 headers,
             });
@@ -172,12 +201,12 @@ class UI {
     async submitUser() {
         submitPopUp.addEventListener('click', async () => {
 
-            /*info for fetch*/
+            //info for fetch
             let url = ``;
             let fetchMethod = '';
             let fetchBody = '';
 
-            /*info for body*/
+            //info for body
             
 
             let first_name = submitPopUp.parentElement.parentElement.children[1].children[0].children[1].value;
@@ -244,3 +273,5 @@ document.addEventListener("DOMContentLoaded", () => {
         ui.submitUser();
     })
 })
+
+*/

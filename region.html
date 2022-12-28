@@ -54,50 +54,57 @@
             </div>
           </nav>
     </header>
-    <main class="main-region">
-      <h1>Add Region/Country/City</h1>
-     
-        <div class="container mt-5 px-2">
-      <div class=' mt-5'>
-        <div class='container'>
-          <!-- country -->
-          <div class='row w3-margin-bottom'>
-            <div class='col-md-6 col-xs-6'>
-              <p><b>Country</b></p>
-            </div>
-            <div class='col-md-6 col-xs-6'>
-              <select id="country" class='form-control selectpicker' data-live-search='true'><option value="">-- Country --</option></select>
-            </div>
-          </div> <!-- end country row -->
-        
-          <!-- region -->
-          <div class='row w3-margin-bottom'>
-            <div class='col-md-6 col-xs-6'>
-              <p><b>Region</b></p>
-            </div>
-            <div class='col-md-6 col-xs-6'>
-              <select id="region" class='form-control'><option value="">-- Region --</option></select>
-            </div>
-          </div> <!-- end region row -->
-        
-          <!-- city -->
-          <div class='row w3-margin-bottom'>
-            <div class='col-md-6 col-xs-6'>
-              <p><b>City</b></p>
-            </div>
-            <div class='col-md-6 col-xs-6'>
-              <select id="city" class='form-control'><option value="">-- City --</option></select>
-            </div>
-          </div> <!-- end city row -->
-          
-            <div id='location'></div>
-          </div> <!-- end container -->
-        </div> <!-- end jumbotron -->
-       
+  <main>
+    <h1 class="region-title">Regions</h1>
+    <div class="w3-padding w3-padding-16 w3-light-grey">
+      <div class='btns-add-del'>
+        <button type="button" class="add-contact " id='myBtn'>Add Region</button>
+      </div>
+   
+    <ul class="list-style" id="myUL">
+      <li class="margin-list"><span class="caret">Regions</span>
+      <div class="btn-container"><button class="btn">add</button>
+        <button class="btn">delete</button></div>
+        <ul class="nested list-style">
+          <li class="margin-list"><span class="caret">Sudamerica </span>
+            <div class="btn-container"><button class="btn">add</button>
+              <button class="btn">delete</button></div>
+            <ul class="nested list-style">
+              <li class="margin-list"><span class="caret">Country</span>
+                <div class="btn-container"><button class="btn">add</button>
+                  <button class="btn">delete</button></div>
+              <ul class="nested list-style">
+                  <li class="margin-list"><span class="caret">Venezuela</span>
+                    <div class="btn-container"><button class="btn">add</button>
+                      <button class="btn">delete</button></div>
+                <ul class="nested list-style">
+                      <li class="margin-list"><span class="caret">City</span>
+                        <div class="btn-container"><button class="btn">add</button>
+                          <button class="btn">delete</button></div>
+                        <ul class="nested list-style">
+                            <li class="margin-list">Caracas</li>
+                            <div class="btn-container"><button class="btn">add</button>
+                              <button class="btn">delete</button></div>
+                            <li class="margin-list">Maracaibo</li>
+                            <div class="btn-container"><button class="btn">add</button>
+                              <button class="btn">delete</button></div>
+                        </ul>
+                      </li>
+                    </ul>
+                </li>  
+            </ul>
+          </li>
+      </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
 
+    
   </main>
+
   
-  <script src="js\scripts\region.js"></script>
+  <script src="js/scripts/region.js"></script>
 
   
 </body>

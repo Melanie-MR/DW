@@ -3,11 +3,11 @@ const sequelize = require("../config/connection");
 
 
 const Users = sequelize.define('users',{
-    first_name: {
+    firstname: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    last_name: {
+    lastname: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -15,10 +15,6 @@ const Users = sequelize.define('users',{
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-    },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
     },
     isAdmin: {
         field:"isAdmin",
@@ -30,8 +26,12 @@ const Users = sequelize.define('users',{
         type: DataTypes.STRING,
         allowNull: false,
     },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     isActive: {
-        field:"isAdmin",
+        field:"isActive",
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,

@@ -3,13 +3,13 @@ const sequelize = require("../config/connection");
 
 
 const Contacts = sequelize.define('contacts', {
-    firstName: {
-        field:"firstName",
+    firstname: {
+        field:"firstname",
         type: DataTypes.STRING,
         allowNull: false,
     },
-    lastName: {
-        field:"lastName",
+    lastname: {
+        field:"lastname",
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -21,7 +21,15 @@ const Contacts = sequelize.define('contacts', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    company: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    country: {
         type: DataTypes.STRING,
         allowNull: false,
     },

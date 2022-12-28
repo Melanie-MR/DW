@@ -1,14 +1,14 @@
 *{
-	padding:0;
-	margin: 0;
+	
 	box-sizing: border-box;
 	list-style:none;
     
 }
 #background-img{
-    background-image: url('backgroung.jpg');
+   /* background-image: url('background.jpg');*/
     width: 100%;
     height: 55vmax;
+    background-color: beige;
 }
 .container-fluid{
     background-color: rgb(221, 240, 253);

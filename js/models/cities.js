@@ -6,12 +6,6 @@ const Cities = sequelize.define('cities',{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    isActive: {
-        field:"isActive",
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-    },
     countries_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -19,6 +13,7 @@ const Cities = sequelize.define('cities',{
 },{
     tableName: "cities",
     underscored: true,
+    timestamps: false,
 });
 
 

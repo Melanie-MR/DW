@@ -7,7 +7,7 @@ const Contacts = require("./contacts");
 
 Regions.hasMany(Countries, {
     foreignKey: "region_id"
-}); 
+});
 Countries.belongsTo(Regions, {
     foreignKey: "region_id",
 });
@@ -19,37 +19,11 @@ Cities.belongsTo(Countries, {
     foreignKey: "countries_id",
 });
 
-Cities.hasMany(Companies, {
-    foreignKey: "cities_id",
-});
-
-Companies.belongsTo(Cities, {
-    foreignKey: "cities_id",
-});
-
-Cities.hasMany(Contacts, {
-    foreignKey: "cities_id",
-})
-
-Contacts.belongsTo(Cities, {
-    foreignKey: "cities_id",
-});
-
-Companies.hasMany(Contacts, {
-    foreignKey: "companies_id",
-})
-
-Contacts.belongsTo(Companies, {
-    foreignKey: "companies_id",
-});
-
-
-
 module.exports = {
     Users,
     Regions,
     Countries,
     Cities,
     Companies,
-    Contacts
+    Contacts,
 };

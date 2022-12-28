@@ -58,7 +58,7 @@
     <main class="main-users">
 <!--Create user-->
 <section class="form">
-    <h1 class="create-title">Create User</h1>
+    <h1 class="create-title">Sign up</h1>
     <form action="" id='create-form' method="POST">
         <div class="form-group">
           <label for="first-name">First Name</label>
@@ -66,7 +66,7 @@
         </div>
         <div class="form-group">
             <label for="first-name">Last Name</label>
-            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Last Name" required>
+            <input type="input" autocomplete="off" name="user" id="last-name" class="form-control" placeholder="Last Name" required>
         </div>
         <div class="form-group">
           <label for="first-name">Username</label>
@@ -74,26 +74,31 @@
         </div>
         <div class="form-group">
             <label for="first-name">Email</label>
-            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Example: name@gmail.com" required>
+            <input type="input" autocomplete="off" name="user" id="email" class="form-control" placeholder="Example: name@gmail.com" required>
         </div>
         <div class="form-group">
-            <label for="first-name">Profile</label>
-            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="Example: Admin or Restricted" required>
-        </div>
+          <label >Profile</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="profile">
+            <label class="form-check-label" for="profile">
+              Admin
+            </label>
+          </div>
+      </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Password" required>
         </div>
         <div class="form-group">
             <label for="password">Repeat Password</label>
-            <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Repeat Password" required>
+            <input type="password" autocomplete="off" name="password" id="repeat-password" class="form-control" placeholder="Repeat Password" required>
           </div>
-        <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Create">
+        <input name="login" id="submit-btn" class="btn btn-block login-btn" type="submit" value="Create">
       </form>
   </section>
 </div>
 
     </main>
-    <script src="./src/js/scripts/users.js"></script>
+    <script src="js/scripts/users.js"></script>
 </body>
 </html>

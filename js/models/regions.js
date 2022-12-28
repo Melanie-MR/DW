@@ -9,6 +9,7 @@ const Regions = sequelize.define('regions',{
 },{
     tableName: "regions",
     underscored: true,
+    timestamps: false,
 });
 
 module.exports = Regions;

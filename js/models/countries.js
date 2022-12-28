@@ -6,12 +6,6 @@ const Countries = sequelize.define('countries',{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    isActive: {
-        field:"isActive",
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-    },
     region_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -19,6 +13,7 @@ const Countries = sequelize.define('countries',{
 },{
     tableName: "countries",
     underscored: true,
+    timestamps: false,
 });
 
 module.exports = Countries;

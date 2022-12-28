@@ -1,8 +1,64 @@
-.mt-5{
-    margin-top: 100px;
-    margin-left: 20px;
+.region-title{
+    margin-left: 10%;
+    margin-top: 3%;
 }
-.main-region{
-    margin-left: 0;
+.add-contact {
+    cursor: pointer;
+    color: white;
+    padding: 10px 30px;
+    background-color: #1D72C2;
+    border-radius: 5px;
+    border: none;
+    margin-left: 80%;
+}
+#btn-table{
+    cursor:pointer;
+    color:white;
+    width: 100px;
+    padding: 5px 15px;
+    background-color: #9ecffd;
+    border-radius: 5px;
+    border: none;
+}
+/* Remove default bullets */
+.list-style, #myUL {
+  list-style-type: none;
+  margin-left: 5%;
+}
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: -1%;
+    margin-left: 10%;
 }
 
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+    border-top: 0;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+ 
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}

@@ -7,15 +7,11 @@ const Companies = sequelize.define('companies',{
         type: DataTypes.STRING,
         allowNull: false,
     },
+    country: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    telephone: {
         type: DataTypes.STRING,
         allowNull: false,
     },
