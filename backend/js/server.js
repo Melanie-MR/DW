@@ -30,7 +30,7 @@ app.use(body_parser.json());
 
 ////////ENDPOINTS///////////
 
-//CONTACTS
+///////CONTACTS///////////
 
 //Search contacts
 
@@ -47,7 +47,7 @@ app.get('/contacts',authUser, async (req, res) => {
     }
 });
 
-//ADD CONTACT (create) 
+//CREATE - ADD CONTACT (create) 
 
 app.post("/contacts", authUser,  async (req, res) => {
     let firstname = req.body.firstname
@@ -83,6 +83,10 @@ app.post("/contacts", authUser,  async (req, res) => {
     }
 });
 
+
+
+///////USERS/////////////////
+
 //JWT - Login with token
 app.post('/login', validateLogin, (req, res) =>{
     const username = req.body.username;
@@ -100,7 +104,7 @@ app.post('/login', validateLogin, (req, res) =>{
 
 })
 
-//Read ALL users.
+//GET - Read ALL users.
 app.get('/users',authUser, isAdmin, async (req, res) => {
     try {
         const users =  await Users.findAll();
@@ -109,6 +113,10 @@ app.get('/users',authUser, isAdmin, async (req, res) => {
         res.status(400).send({msg:'Something happened ' + error});  
     }
 });
+
+
+
+
 
 /////////////////////// REGIONS
 
@@ -136,6 +144,23 @@ app.post('/regions', authUser, async(req, res) => {
       res.status(400).send({msg:'Something happened ' + error});  
   }
 });
+
+//EDIT REGIONS
+app.put("/regions/:id", authUser, async (req, res) => {
+    const { name, regions_id } = req.body;
+    const idParam = req.params.id;
+    const newRegion = await Regions.update( 
+      {
+        name,
+      },
+      {
+        where: {
+          id: idParam,
+        },
+      }
+    );
+    res.status(201).send({msg:'Region updated successfully', newRegion});
+  });
 
 //DELETE REGION 
 app.delete('/regions/:id', authUser, isAdmin, async (req, res) => { 

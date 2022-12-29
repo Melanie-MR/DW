@@ -62,7 +62,7 @@
                       <button type="button" class="add-contact " id='myBtn'>Add Company</button>
                     </div>
                  
-      
+      <!-- Table -->
       <div class="container mt-5 px-2">
 
           <div class="table-responsive">
@@ -132,6 +132,7 @@
         </div>
           
       </div>
+      <!-- End Table -->
 <!-- Modal -->
 
 <div id="myModal" class="modal modal-xl">
@@ -143,57 +144,31 @@
           <span class="close">&times;</span> 
       </div>  
       <div class="modal-body">
-          <form action="" class="form-row">
+        <form action="" class="form-row">
               <div class="form-contacts">
                   <label for="first-name">Name <span id="asterisk" >*</span></label>
-                  <input type="input" autocomplete="off" name="user" id="first-name" class="input-width" required>
+                  <input type="input" autocomplete="off" name="user" id="first-name" class="input-width" placeholder="Company's name" required>
               </div>
-          </form>
-          <div class="form-row">
-              <form>
-                  <!--Regions/Country/Cities-->
-                      <div class="container mt-5 px-2">
-                          <div class=' mt-5'>
-                              <div class='container'>
-                                  <!-- country -->
-                                  <div class='row w3-margin-bottom'>
-                                      <div class='col-md-1 col-xs-1'>
-                                      <p><b>Country</b></p>
-                                      </div>
-                                      <div class='col-md-3 col-xs-3'>
-                                          <select id="country" class='form-control selectpicker' data-live-search='true'><option value="">-- Country --</option></select>
-                                      </div>
-                                  </div> <!-- end country row -->
-                                  <!-- region -->
-                                  <div class='row w3-margin-bottom'>
-                                      <div class='col-md-1 col-xs-1'>
-                                      <p><b>Region</b></p>
-                                      </div>
-                                      <div class='col-md-3 col-xs-3'>
-                                          <select id="region" class='form-control'><option value="">-- Region --</option></select>
-                                      </div>
-                                  </div> <!-- end region row -->
-                                  <!-- city -->
-                                  <div class='row w3-margin-bottom'>
-                                      <div class='col-md-1 col-xs-1'>
-                                      <p><b>City</b></p>
-                                      </div>
-                                      <div class='col-md-3 col-xs-3'>
-                                          <select id="city" class='form-control'><option value="">-- City --</option></select>
-                                      </div>
-                                  </div> <!-- end city row -->
-                              </div> <!-- end container -->
-                          </div> <!-- end jumbotron -->
-                      </div>
-
-                  <div class="form-contacts">
-                      <label for="address">Address <span id="asterisk" >*</span></label>
-                      <input type="input" autocomplete="off" name="address" id="address" class="input-width" placeholder="Company's name" required>
-                  </div>
-              </form>
-          </div>
+         
+              <div class="form-contacts">
+                  <label for="address">Address <span id="asterisk" >*</span></label>
+                  <input type="input" autocomplete="off" name="address" id="address" class="input-width" placeholder="Company's Address"  required>
+              </div>
+              <div class="form-contacts">
+                <label for="email">Email <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="email" id="email" class="input-width" placeholder="email" required>
+              </div>
+              <div class="form-contacts">
+                <label for="phone">Phone number <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="phone" id="phone" class="input-width" placeholder="phone number"  required>
+              </div>
+              <div class="form-contacts">
+                <label for="city">City <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="city" id="city" class="input-width" placeholder="City"  required>
+              </div>
+        </form>
       </div>
-      <div>
+  <div>
           <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Create">
       </div>         
   <div class="modal-footer">
@@ -206,6 +181,6 @@
 
     </main>
     <!--arreglas link script-->
-    <script src='js/scripts/companies.js'></script>
+    <script src='scripts/companies.js'></script>
 </body>
 </html>

@@ -96,9 +96,33 @@
         <input name="login" id="submit-btn" class="btn btn-block login-btn" type="submit" value="Create">
       </form>
   </section>
+  <section>
+    <!-- Table -->
+    <div class="container mt-5 px-2" id="users-table">
+      <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            
+        <thead>
+            <tr class="bg-light">
+            <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+            <th scope="col" width="5%">#</th>
+            <th scope="col" width="20%">Name</th>
+            <th scope="col" width="20%">Email</th>
+            <th scope="col" width="20%">Profile</th>
+            <th scope="col" width="10%">Is Active</th>
+            <th scope="col" class="text-end" width="20%">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="users-table-body">
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <!-- End Table -->
+  </section>
 </div>
 
     </main>
-    <script src="js/scripts/users.js"></script>
+    <script src="scripts/users.js"></script>
 </body>
 </html>
