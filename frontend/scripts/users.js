@@ -101,7 +101,6 @@ async function loadUsersTable() {
           const profile = user.isAdmin ? 'Admin' : 'Basic';
           const checkedAdm = user.isAdmin ? 'checked' : '';
           usersTableHTML += `<tr>
-                                <th scope="row"><input class="form-check-input" type="checkbox"></th>
                                 <td>${id}</td>
                                 <td>${name}</td>
                                 <td><span class="ms-1">${email}</span></td>

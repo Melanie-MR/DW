@@ -83,7 +83,7 @@
         <section id='contacts-table'>
           <label for="search-input"></label>
           <input type="text" id='search-bar' placeholder='Search'>
-          <button type="submit">
+          <button type="submit" onclick="searchContactsTable()">
             <i class="fa fa-search"></i>
           </button>
           <div class='btns-add-del'>
@@ -92,14 +92,13 @@
       </section>
 
         <!--Table-->
+    
         <div class="container mt-5 px-2" id="contacts-table">
           <div class="table-responsive">
-            <table class="table table-responsive table-borderless">
+            <table id= "myTable" class="table table-responsive table-borderless">
               <thead>
                 <tr class="bg-light">
-                  <th scope="col" width="5%">
-                    <input class="form-check-input" type="checkbox">
-                  </th>
+                 
                   <th scope="col" width="2%">#</th>
                   <th scope="col" width="20%">Contact</th>
                   <th scope="col" width="10%">Country/Region</th>

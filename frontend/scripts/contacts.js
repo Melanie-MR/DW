@@ -11,6 +11,7 @@ showAdmin();
 loadCompaniesSelect();
 loadCitiesSelect();
 
+
 //LOAD COMPANIES SELECT
 //COMPANIES SELECT
 async function loadCompaniesSelect(){
@@ -158,6 +159,69 @@ document.querySelector('#contact-name-btn').addEventListener('click', async (ev)
 })
 
 
+/////SEARCH CONTACTS FROM DB
+async function searchContactsTable() {
+
+  const search =document.getElementById('search-bar').value;
+
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+  //connection with backend (server.js)
+  try{
+    const response = await fetch('http://localhost:3000/searchcontacts?search=' + search, {
+        method: 'GET',
+        headers
+    });
+
+    const responseObject = await response.json();
+
+    if(!response.ok){
+        alert(responseObject.msg);
+    } else {
+      const contacts = responseObject.contacts;
+      var contactsTableHTML = ``;
+
+      contacts.forEach(contacts => {
+        const id = contacts.id;
+        const contact = `${contacts.firstname} ${contacts.lastname}`;
+        const city = contacts.city.name; //agregar country and region
+        const city_id = contacts.cities_id; //agregar country and region
+        const company = contacts.company.name; ///falta mostrar nombre en vez de ID
+        const company_id = contacts.companies_id; ///falta mostrar nombre en vez de ID
+        const position = contacts.position;
+        const interest = contacts.interest;
+
+        contactsTableHTML += `<tr>
+                              <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                              <td>${id}</td>
+                              <td>${contact}</td>
+                              <td>${city}</td>
+                              <td>${company}</td>
+                              <td>${position}</td>
+                              <td>${interest}</td>
+
+                              <td class="text-end">
+                                  <button class="btn" id='edit-contacts-${id}' onclick="openEditContactsModal('${id}','${contacts.firstname}','${contacts.lastname}','${contacts.address}','${contacts.email}','${company_id}', '${city_id}', '${position}', '${interest}');">Edit</button>                                  
+                                  <button class="btn" onclick="deleteContact(${id})">Delete</button></td>
+                          </tr>`;
+                          
+      });
+      const element = document.getElementById('contacts-table-body'); //GUARDO EN DIV GENERAL QUE ESTA EN HTML ORIGINAL.
+      element.innerHTML = contactsTableHTML;
+
+    }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
+
+}
+
+
 /////LOAD CONTACTS FROM DB
 async function loadContactsTable() {
   const token = localStorage.getItem('token');
@@ -192,7 +256,6 @@ async function loadContactsTable() {
         const interest = contacts.interest;
 
         contactsTableHTML += `<tr>
-                              <th scope="row"><input class="form-check-input" type="checkbox"></th>
                               <td>${id}</td>
                               <td>${contact}</td>
                               <td>${city}</td>
@@ -380,5 +443,40 @@ span2.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal2) {
     modal2.style.display = "none";
+  }
+}
+
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
   }
 }

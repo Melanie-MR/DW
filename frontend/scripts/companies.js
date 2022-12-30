@@ -89,7 +89,6 @@ async function loadCompanieTable() {
 
 
         companiesTableHTML += `<tr>
-                              <th scope="row"><input class="form-check-input" type="checkbox"></th>
                               <td>${id}</td>
                               <td>${name}</td>
                               <td>${address}</td>

@@ -24,23 +24,19 @@ Once that you have the files, open it in your favorite editor.
 ## Dependencies:
 In your terminal, install the necessary dependencies running the command:
 
-*npm init --yes*
+*npm install*
 
-then,
+then, execute the following command: 
 
-*npm install express sequelize mysql2 body-parser dotenv cors jsonwebtoken bcryptjs bootstrap@5.2.3 axios nodemon express-jwt jquery ajax--save*
+*npm run dev* The server will be running in localhost:3000
 
 **WARNING:
 You must modify config/connection.js to make it match with your enviroment. Take in account that in the file .env you can adjust the variables used in the file config/connection.js. For example: DB_NAME, DB_HOST, DB_PORT...**
 
 ## Data Base:
 
-Use the dw.sql file to import it into your Database client. It will provide the entire structure and some examples to add products and users. I recommend using Postman to test the endpoints. 
+Create a data base named dw and use the dw.sql file to import the information into your Database client. It will provide the entire structure and some examples to add products and users. I recommend using Postman to test the endpoints. You can find the postman's collection as DW.postman_collection.json.
 
 IF YOU HAVE BOTH DB CREATED AND THE CONFIG ADJUSTMENTS DONE IN YOUR EDITOR, GO AHEAD WITH THE NEXT STEP:
-
-Execute the following command: 
-
-*npm run dev*
 
 You have all set! Try the endpoints in your Postman collection and have fun! :)

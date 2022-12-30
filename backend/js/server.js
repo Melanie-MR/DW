@@ -8,6 +8,7 @@ const body_parser = require("body-parser");
 const cors = require("cors"); 
 const sequelize = require("./config/connection"); //To import db connection
 const PORT = process.env.PORT || 3000; 
+const { Op } = require("sequelize");
 
 //IMPORT MODELS
 const {
@@ -120,7 +121,31 @@ app.delete('/companies/:id', authUser, isAdmin, async (req, res) => {
 
 //Search contacts
 
-//....?..//
+app.get('/searchcontacts', authUser, async (req, res) => {
+    let search = req.query.search
+    try {
+        const contacts =  await Contacts.findAll({
+            where: {
+                [Op.or]: [
+                    { firstname: { [Op.like]: '%' + search + '%' } },
+                    { lastname: { [Op.like]: '%' + search + '%' } },
+                    { position: { [Op.like]: '%' + search + '%' } },
+                    { email: { [Op.like]: '%' + search + '%' } },
+                    { address: { [Op.like]: '%' + search + '%' } },        
+                  ]
+            },
+            include: [{
+              model: Cities,
+            },
+            {
+              model: Companies,
+            }]
+          });
+        res.status(200).send({msg:'These are all the contacts', contacts});  
+    } catch (error) {
+        res.status(400).send({msg:'Something happened ' + error});  
+    }
+});
 
 //GET CONTACTS -- Read ALL contacts.
 
@@ -252,7 +277,7 @@ app.get('/users',authUser, isAdmin, async (req, res) => {
 
 
 // CREATE Sign up new user (add user)
-app.post('/signup', authUser, isAdmin, validateSignup, validateUser, async(req, res) => {
+app.post('/signup', authUser, validateSignup, validateUser, async(req, res) => {
 
     const username = req.body.username;
     const firstname = req.body.firstname;
@@ -612,11 +637,10 @@ function authUser(req, res, next) {
 
 // To verify if user is admin
 async function isAdmin (req, res, next) {
-    console.log(req.user);
     const id = req.user.id;
     const user = await Users.findOne({where: {id: id}});
     
-    const isAdmin = user.isAdmin;
+    const isAdmin = user.isAdmin; 
 
     if (isAdmin == true) { 
         return next();
