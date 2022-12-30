@@ -277,7 +277,7 @@ app.get('/users',authUser, isAdmin, async (req, res) => {
 
 
 // CREATE Sign up new user (add user)
-app.post('/signup', authUser, validateSignup, validateUser, async(req, res) => {
+app.post('/signup', authUser, isAdmin, validateSignup, validateUser, async(req, res) => {
 
     const username = req.body.username;
     const firstname = req.body.firstname;
