@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
+html{
+    background-color: beige;
+ 
+}
 body{
     font-family: 'Open Sans', sans-serif;
     
-}
-.search{
-  
-  top:6px;
-  left:10px;
 }
 
 .form-control{
@@ -22,23 +21,12 @@ body{
     box-shadow:none;
 }
 
-.green{
-    
-    color:green;
-}
+
 #contacts-table{
     margin: auto;
     width: 95vw;
 }
 
-
-#search-bar{
-    padding: 20px;
-    width: 35vw;
-    height: 41px;
-    border-radius: 4px;
-    border:solid 1px #cccccc;
-}
 
 .add-contact{
     cursor:pointer;
@@ -75,9 +63,7 @@ body{
     margin-bottom: 10px;
     font-family: 'Open Sans', sans-serif;
 }
-.input-width{
-    width: 150px;
-}
+
 .form-row{
     display:flex;
     flex-direction: row;
@@ -85,3 +71,58 @@ body{
 #asterisk{
     color: red;
 }
+
+/*TABLE*/
+
+
+.container{
+    margin-top: 2%;
+}
+
+.bg-light{
+    font-size: 18px;
+}
+
+#contacts-table-body{
+        font-size: 18px;
+}
+
+  /*MODAL STYLE*/
+
+ .modal-content{
+    height: 300px;
+  }
+  #asterisk{
+    color: RED;
+  }
+  .style-title-modal{
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .style-title-select{
+    margin-left: 1%;
+    font-size: 18px;
+    font-weight: 400;
+  
+  }
+  .input-width{
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .style-btn{
+    background-color: #1D72C2;
+    color: white;
+    width: 150px;
+    margin-left: 45vw;
+    margin-right: 10%;
+    font-size: 18px;
+  
+  }
+
+  .input-width{
+    width: 150px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  

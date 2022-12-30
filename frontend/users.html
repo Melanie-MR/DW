@@ -12,117 +12,198 @@
     <title>Data Warehouse</title>
 </head>
 <body>
-    <div id="background-img"> 
+  <div id="background-img">
     <!--Navbar-->
     <header>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Data Warehouse</a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="contacts.html"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
-                  <li><a href="companies.html"><h1 class="nav-font">Companies</h1></a></li>
-                  <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
-                  <li><a href="region.html"><h1 class="nav-font">Region/City</h1></a></li>
-                  <script>
-                    document.getElementById("demo").onmouseover = function() {mouseOver()};
-                    document.getElementById("demo").onmouseout = function() {mouseOut()};
-                    document.getElementById("demo").onmouseleave = function() {mouseLeave()};
-                    
-                    function mouseOver() {
-                      document.getElementById("demo").style.color = "9d9d9d";
-                    }
-                    
-                    function mouseOut() {
-                      document.getElementById("demo").style.color = "9d9d9d";
-                    }
-                    function mouseLeave() {
-                      document.getElementById("demo").style.color = "9d9d9d";
-                    }
-                    </script>
-                  
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Data Warehouse</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="contacts.html">
+                  <h1 class="nav-font" id="demo">Contacts</h1>
+                </a>
+              </li>
+              <li>
+                <a href="companies.html">
+                  <h1 class="nav-font">Companies</h1>
+                </a>
+              </li>
+              <li id="usersHide" class="hidden">
+                <a href="users.html">
+                  <h1 class="nav-font">Users</h1>
+                </a>
+              </li>
+              <li>
+                <a href="region.html">
+                  <h1 class="nav-font">Region/City</h1>
+                </a>
+              </li>
+              <script>
+                document.getElementById("demo").onmouseover = function() {
+                  mouseOver()
+                };
+                document.getElementById("demo").onmouseout = function() {
+                  mouseOut()
+                };
+                document.getElementById("demo").onmouseleave = function() {
+                  mouseLeave()
+                };
 
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
-  
-    <main class="main-users">
-<!--Create user-->
-<section class="form">
-    <h1 class="create-title">Sign up</h1>
-    <form action="" id='create-form' method="POST">
-        <div class="form-group">
-          <label for="first-name">First Name</label>
-          <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="First Name" required>
+                function mouseOver() {
+                  document.getElementById("demo").style.color = "9d9d9d";
+                }
+
+                function mouseOut() {
+                  document.getElementById("demo").style.color = "9d9d9d";
+                }
+
+                function mouseLeave() {
+                  document.getElementById("demo").style.color = "9d9d9d";
+                }
+              </script>
+            </ul>
+          </div>
         </div>
-        <div class="form-group">
+      </nav>
+    </header>
+    <main class="main-users">
+      <!--Create user FORM-->
+      <section class="form">
+        <h1 class="create-title">Sign up</h1>
+        <form action="" id='create-form' method="POST">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="input" autocomplete="off" name="user" id="first-name" class="form-control" placeholder="First Name" required>
+          </div>
+          <div class="form-group">
             <label for="first-name">Last Name</label>
             <input type="input" autocomplete="off" name="user" id="last-name" class="form-control" placeholder="Last Name" required>
-        </div>
-        <div class="form-group">
-          <label for="first-name">Username</label>
-          <input type="input" autocomplete="off" name="user" id="username" class="form-control" placeholder="First Name" required>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
+            <label for="first-name">Username</label>
+            <input type="input" autocomplete="off" name="user" id="username" class="form-control" placeholder="First Name" required>
+          </div>
+          <div class="form-group">
             <label for="first-name">Email</label>
             <input type="input" autocomplete="off" name="user" id="email" class="form-control" placeholder="Example: name@gmail.com" required>
-        </div>
-        <div class="form-group">
-          <label >Profile</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="profile">
-            <label class="form-check-label" for="profile">
-              Admin
-            </label>
           </div>
-      </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Password" required>
-        </div>
-        <div class="form-group">
+          <div class="form-group">
+            <label>Profile</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="profile">
+              <label class="form-check-label" for="profile"> Admin </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" autocomplete="off" name="password" id="password" class="form-control" placeholder="Password" required>
+          </div>
+          <div class="form-group">
             <label for="password">Repeat Password</label>
             <input type="password" autocomplete="off" name="password" id="repeat-password" class="form-control" placeholder="Repeat Password" required>
           </div>
-        <input name="login" id="submit-btn" class="btn btn-block login-btn" type="submit" value="Create">
-      </form>
-  </section>
-  <section>
-    <!-- Table -->
-    <div class="container mt-5 px-2" id="users-table">
-      <div class="table-responsive">
-        <table class="table table-responsive table-borderless">
-            
-        <thead>
-            <tr class="bg-light">
-            <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
-            <th scope="col" width="5%">#</th>
-            <th scope="col" width="20%">Name</th>
-            <th scope="col" width="20%">Email</th>
-            <th scope="col" width="20%">Profile</th>
-            <th scope="col" width="10%">Is Active</th>
-            <th scope="col" class="text-end" width="20%">Actions</th>
-            </tr>
-        </thead>
-        <tbody id="users-table-body">
-        </tbody>
-      </table>
-    </div>
-    </div>
-    <!-- End Table -->
-  </section>
-</div>
+          <input name="login" id="submit-btn" class="btn login-btn" type="submit" value="Create">
+        </form>
+      </section>
+      <section>
+        <!-- Table -->
+        <h1 id="users-title">Users List</h1>
+        <div class="container mt-5 px-2" id="users-table">
+          <div class="table-responsive">
+            <table class="table table-responsive table-borderless">
+              <thead>
+                <tr class="bg-light">
+                  <th scope="col" width="5%">
+                    <input class="form-check-input" type="checkbox">
+                  </th>
+                  <th scope="col" width="5%">#</th>
+                  <th scope="col" width="20%">Name</th>
+                  <th scope="col" width="20%">Email</th>
+                  <th scope="col" width="20%">Profile</th>
+                  <th scope="col" class="text-end" width="20%">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- End Table -->
+      </section>
+  </div>
 
-    </main>
-    <script src="scripts/users.js"></script>
+  <!-- Modal -->
+  <div id="myModal" class="modal modal-xl">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="staticBackdropLabel">Update User</h1>
+        <span id="close" class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form action="" class="form-row">
+          <div class="form-contacts hidden">
+            <label class= "style-title-modal" for="id-update">ID <span id="asterisk">*</span>
+            </label>
+            <input type="input" autocomplete="off" name="id-update" id="id-update" class="input-width" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="first-name-update">First Name <span id="asterisk">*</span>
+            </label>
+            <input type="input" autocomplete="off" name="first-name-update" id="first-name-update" class="input-width" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="last-name-update">Last Name <span id="asterisk">*</span>
+            </label>
+            <input type="input" autocomplete="off" name="last-name-update" id="last-name-update" class="input-width" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="username-update">Username <span id="asterisk">*</span>
+            </label>
+            <input type="input" autocomplete="off" name="username-update" id="username-update" class="input-width" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="email-update">Email <span id="asterisk">*</span>
+            </label>
+            <input type="email" autocomplete="off" name="email-update" id="email-update" class="input-width" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="profile-update">Profile <span id="asterisk">*</span></label>
+            <div class="form-check">
+              <input  name="profile-update" class="form-check-input input-width" type="checkbox" value="" id="profile-update">
+              <label class="form-check-label" for="profile"> Admin </label>
+            </div>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="password-update">Password <span id="asterisk">*</span>
+            </label>
+            <input type="password" autocomplete="off" name="password-update" id="password-update" class="input-width" placeholder="" required>
+          </div>
+          <div class="form-contacts">
+            <label class= "style-title-modal" for="rep-password-update">Repeat Password <span id="asterisk">*</span>
+            </label>
+            <input type="password" autocomplete="off" name="rep-password-update" id="rep-password-update" class="input-width" placeholder="" required>
+          </div>
+        </form>
+      </div>
+      <div>
+        <input name="contact-name-btn" id="contact-name-btn" class="btn login-btn style-btn" type="click" value="Update" onclick="updateUser()">
+      </div>
+    </div>
+
+    
+  </main>
+  </div>
+  <script src="scripts/users.js"></script>
 </body>
 </html>
+
+

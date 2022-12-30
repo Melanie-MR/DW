@@ -21,15 +21,7 @@ const Contacts = sequelize.define('contacts', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    company: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    country: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -41,12 +33,6 @@ const Contacts = sequelize.define('contacts', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    isActive: {
-        field:"isActive",
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-    },
     interest: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -54,6 +40,7 @@ const Contacts = sequelize.define('contacts', {
 },{
     tableName: "contacts",
     underscored: true,
+    timestamps: false,
 })
 
 

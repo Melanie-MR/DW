@@ -30,7 +30,7 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="contacts.html"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
                   <li><a href="companies.html"><h1 class="nav-font">Companies</h1></a></li>
-                  <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
+                  <li id="usersHide" class="hidden"><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
                   <li><a href="#"><h1 class="nav-font">Region/City</h1></a></li>
                   <script>
                     document.getElementById("demo").onmouseover = function() {mouseOver()};
@@ -65,7 +65,7 @@
 
       <ul class="list-style" id="myUL">
         <li id="myRegions">
-          <span class="caret" id="load-regions">Regions</span>
+          <span class="caret style-tree" id="load-regions">Regions</span>
         </li>
       </ul> 
       
@@ -83,12 +83,12 @@
       <div class="modal-body">
           <form action="" class="form-row">
               <div class="form-contacts">
-                  <label for="region-name">Region Name<span id="asterisk" >*</span></label>
+                  <label for="region-name" class="style-title-modal">Region Name<span id="asterisk" >*</span></label>
                   <input type="input" autocomplete="off" name="region-name" id="region-name" class="input-width" required>
               </div>
           </form>
         <div>
-            <input name="region-name-btn" id="region-name-btn" class="btn btn-block login-btn" value="Create">
+            <input name="region-name-btn" id="region-name-btn" class="btn btn-block login-btn style-btn" value="Create">
         </div>         
       </div>
   </div>
@@ -108,16 +108,16 @@
       <div class="modal-body">
           <form action="" class="form-row">
               <div class="form-contacts">
-                  <label for="coun-name">Region <span id="asterisk" >*</span></label>
-                  <select class="form-select" id="select-regions-country">
-                    <option selected>Select Country</option>
+                  <label for="coun-name" class="style-title-modal">Region <span id="asterisk" >*</span></label>
+                  <select class="form-select style-title-select" id="select-regions-country">
+                    <option selected>Select Region</option>
                   </select>
-                  <label for="coun-name">Country Name <span id="asterisk" >*</span></label>
+                  <label for="coun-name" class="style-title-modal">Country Name <span id="asterisk" >*</span></label>
                   <input type="input" autocomplete="off" name="user" id="coun-name" class="input-width" required>
               </div>
           </form>
         <div>
-            <input name="coun-name-btn" id="coun-name-btn" class="btn btn-block login-btn" value="Create">
+            <input name="coun-name-btn" id="coun-name-btn" class="btn btn-block login-btn style-btn" value="Create">
         </div>         
       </div>
     </div>         
@@ -130,23 +130,23 @@
   <!-- Modal content -->
   <div class="modal-content">
       <div class="modal-header"> 
-          <h1 class="modal-title" id="staticBackdropLabel">New city</h1>
+          <h1 class="modal-title" id="staticBackdropLabel">New City</h1>
     
           <span id="close3" class="close">&times;</span> 
       </div>  
       <div class="modal-body">
           <form action="" class="form-row">
               <div class="form-contacts">
-                  <label for="select-country-cities">Region <span id="asterisk" >*</span></label>
-                    <select class="form-select" id="select-country-cities">
+                  <label for="select-country-cities" class="style-title-modal">Country <span id="asterisk" >*</span></label>
+                    <select class="form-select style-title-select" id="select-country-cities">
                       <option selected>Select Country</option>
                   </select>
-                  <label for="city-name">City Name <span id="asterisk" >*</span></label>
+                  <label for="city-name" class="style-title-modal">City Name <span id="asterisk" >*</span></label>
                   <input type="input" autocomplete="off" name="user" id="city-name" class="input-width" required>
               </div>
           </form>
         <div>
-            <input name="city-name-btn" id="city-name-btn" class="btn btn-block login-btn" value="Create">
+            <input name="city-name-btn" id="city-name-btn" class="btn btn-block login-btn style-btn" value="Create">
         </div>         
       </div>
     </div>         

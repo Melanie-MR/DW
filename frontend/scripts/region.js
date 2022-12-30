@@ -1,3 +1,15 @@
+// check admin user
+//Show hide functions
+function showAdmin() {
+  const isAdmin = localStorage.getItem('isAdmin');
+  const usersTab = document.getElementById('usersHide');
+  if (isAdmin=='true'){
+    usersTab.classList.remove('hidden');
+  }
+}
+showAdmin();
+
+
 //Show hide functions
 function show(id) {
   document.getElementById(id).classList.remove('hidden')
@@ -7,7 +19,8 @@ function hide(id) {
   document.getElementById(id).classList.add('hidden')
 }
 
-////FRONT/////
+///////////////////////////////////FRONT//////////////////////////////////////////
+
 //TREE LIST
 //Add click event to all children
 function addEvents() {
@@ -35,44 +48,9 @@ document.querySelector('#load-regions').onclick = function(ev) {
 
 }
 
-async function loadCountriesSelect(){
-  const token = localStorage.getItem('token');
-  const headers = new Headers();
-  headers.append('Content-Type',"application/json");
-  headers.append('Authorization', `Bearer ${token}`);
-  headers.append('Access-Control-Allow-Origin', '*');
+////////////////SELECT REGIONS AND COUNTRIES INSIDE MODAL
 
-  //connection with backend (server.js)
-  try{
-    const response = await fetch('http://localhost:3000/countries', {
-        method: 'GET',
-        headers
-    });
-
-    const responseObject = await response.json();
-
-    if(!response.ok){
-        alert(responseObject.msg);
-    } else {
-        
-      const countries = responseObject.countries;
-      var countriesSelectHTML = ``;
-      countries.forEach(reg => {
-        const name = reg.name;
-        const id = reg.id;
-        countriesSelectHTML += `<option value="${id}" >${name}</option>`
-                          
-      });
-      const element = document.getElementById('select-country-cities');
-      element.innerHTML = element.innerHTML + countriesSelectHTML;
-    }
-  } catch (error){
-      alert("something is wrong, try again later");
-      console.error(error);
-  }
-
-}
-
+//REGIONS SELECT
 async function loadRegionsSelect(){
   const token = localStorage.getItem('token');
   const headers = new Headers();
@@ -111,6 +89,45 @@ async function loadRegionsSelect(){
 
 }
 
+//COUNTRIES SELECT
+async function loadCountriesSelect(){
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+  try{
+    const response = await fetch('http://localhost:3000/countries', {
+        method: 'GET',
+        headers
+    });
+
+    const responseObject = await response.json();
+
+    if(!response.ok){
+        alert(responseObject.msg);
+    } else {
+        
+      const countries = responseObject.countries;
+      var countriesSelectHTML = ``;
+      countries.forEach(reg => {
+        const name = reg.name;
+        const id = reg.id;
+        countriesSelectHTML += `<option value="${id}" >${name}</option>`
+                          
+      });
+      const element = document.getElementById('select-country-cities');
+      element.innerHTML = element.innerHTML + countriesSelectHTML;
+    }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
+
+}
+
+
 /////LOAD REGION FROM DB
 async function loadRegions() {
   const token = localStorage.getItem('token');
@@ -139,7 +156,7 @@ async function loadRegions() {
         const id = reg.id;
         regionsHTML += `<ul class="nested list-style active">
                           <li id="reg-${id}">
-                            <span class="caret" id="country-btn-${id}">${name}</span>
+                            <span class="caret style-tree" id="country-btn-${id}">${name}</span>
                             <div class="btn-container">
                               <input value="${name}" class="hidden" type="input" autocomplete="off" name="region-name" id="region-name-${id}">
                               <button class="btn hidden" id='update-reg-${id}' onclick= "updateRegion(${id})">Update</button>
@@ -198,14 +215,16 @@ async function loadCountries(idRegion) {
         const id = coun.id;
         countriesHTML += `<ul class="nested list-style active">
                             <li>
-                              <span class="caret">Country</span>
+                              <span class="caret style-tree">Country</span>
                               <ul class="nested list-style">
                               <li id="coun-${id}">
-                                <span class="caret" id="city-btn-${id}">${name}</span>
+                                <span class="caret style-tree" id="city-btn-${id}">${name}</span>
                                 <div class="btn-container">
-                                  <button class="btn">add</button> //cambiar como region
-                                  <button class="btn">delete</button> //cambiar como region
-                                </div>                                
+                                  <input value="${name}" class="hidden" type="input" autocomplete="off" name="coun-name" id="coun-name-${id}">
+                                  <button class="btn hidden" id='update-coun-${id}' onclick= "updateCoun(${id})">Update</button>
+                                  <button type="button" class="btn" id='edit-coun-${id}' onclick="show('coun-name-${id}');hide('edit-coun-${id}');show('update-coun-${id}');">Edit</button>
+                                  <button class="btn" onclick= "deleteRegion(${id})">Delete</button>
+                                </div>                               
                               </li>
                             </ul>
                           </li>
@@ -214,6 +233,8 @@ async function loadCountries(idRegion) {
       const counElement = document.getElementById(`reg-${idRegion}`);
       counElement.innerHTML = counElement.innerHTML + countriesHTML;
       addEvents();
+
+// Para todos los countries, agrega el evento de click para cargar cities
       countries.forEach(coun => {
         const id = coun.id;
         document.querySelector('#city-btn-' + id).onclick = function(ev) {
@@ -229,10 +250,8 @@ async function loadCountries(idRegion) {
 
 }
 
-//HACER FUNCION UPDATE REGION Y CITY
-//HACER FUNCION DELETE COUNTRY Y REGION 
 
-///LOAD CITIES FROM DB (NO ANDA, NO VEO EL ERROR)
+///LOAD CITIES FROM DB 
 async function loadCities(idCountries) {
   const token = localStorage.getItem('token');
   const headers = new Headers();
@@ -260,14 +279,16 @@ async function loadCities(idCountries) {
         const id = cit.id;
         citiesHTML += `<ul class="nested list-style active">
                         <li>
-                          <span class="caret">City</span>
+                          <span class="caret style-tree">City</span>
                           <ul class="nested list-style">
                             <li id="cit-${id}">
-                              <span>${name}</span>
-                                <div class="btn-container">
-                                  <button class="btn">add</button>
-                                  <button class="btn" onclick= "deleteRegion(${id})">delete</button>
-                                </div>
+                              <span  class="style-tree">${name}</span>
+                              <div class="btn-container">
+                                <input value="${name}" class="hidden" type="input" autocomplete="off" name="city-name" id="city-name-${id}">
+                                <button class="btn hidden" id='update-cit-${id}' onclick= "updateCity(${id})">Update</button>
+                                <button type="button" class="btn" id='edit-cit-${id}' onclick="show('city-name-${id}');hide('edit-cit-${id}');show('update-cit-${id}');">Edit</button>
+                                <button class="btn" onclick= "deleteRegion(${id})">Delete</button>
+                              </div>
                             </li>
                           </ul>
                         </li>
@@ -285,8 +306,37 @@ async function loadCities(idCountries) {
 
 }
 
-
+//DELETE REGION BTN (NO FUNCIONA, ERROR: Something happened SequelizeForeignKeyConstraintError: Cannot delete or update a parent row: a foreign key constraint fails (`dw`.`countries`, CONSTRAINT `fk_countries_regions` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)")
 async function deleteRegion(id) {
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+  //connection with backend (server.js)
+  try{
+    const response = await fetch(`http://localhost:3000/regions/${id}`, {
+        method: 'DELETE',
+        headers
+    });
+
+    const responseObject = await response.json();
+
+    if(!response.ok){
+        alert(responseObject.msg);
+    } else {
+      location.reload();
+    }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
+
+}
+
+//DELETE COUNTRY BTN 
+/* async function deleteCountry(id) {
   const token = localStorage.getItem('token');
   const headers = new Headers();
   headers.append('Content-Type',"application/json");
@@ -312,7 +362,118 @@ async function deleteRegion(id) {
       console.error(error);
   }
 
+} */
+
+
+//////////UPDATES REGION, COUNTRY, CITY BTN
+
+//UPDATE REGION
+async function updateRegion(id) {
+   
+  const inputRegionName = document.getElementById('region-name-' + id);
+  const name = inputRegionName.value;
+
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+
+  //connection with backend (server.js)
+  try{
+      const response = await fetch('http://localhost:3000/regions/'+ id, {
+          method: 'PUT',
+          body: JSON.stringify({name}),
+          headers
+      });
+
+      const responseObject = await response.json();
+
+      if(!response.ok){
+          alert(responseObject.msg);
+      } else {
+          alert(responseObject.msg);
+          location.reload()
+      }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
 }
+
+//UPDATE COUNTRY
+ async function updateCoun(id) {
+   
+  const inputCounName = document.getElementById('coun-name-' + id);
+  const name = inputCounName.value;
+
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+
+  //connection with backend (server.js)
+  try{
+      const response = await fetch('http://localhost:3000/countries/'+ id, {
+          method: 'PUT',
+          body: JSON.stringify({name}),
+          headers
+      });
+
+      const responseObject = await response.json();
+
+      if(!response.ok){
+          alert(responseObject.msg);
+      } else {
+          alert(responseObject.msg);
+          location.reload()
+      }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
+}
+
+//UPDATE CITY
+async function updateCity(id) {
+   
+  const inputCityName = document.getElementById('city-name-' + id);
+  const name = inputCityName.value;
+
+  const token = localStorage.getItem('token');
+  const headers = new Headers();
+  headers.append('Content-Type',"application/json");
+  headers.append('Authorization', `Bearer ${token}`);
+  headers.append('Access-Control-Allow-Origin', '*');
+
+
+  //connection with backend (server.js)
+  try{
+      const response = await fetch('http://localhost:3000/cities/'+ id, {
+          method: 'PUT',
+          body: JSON.stringify({name}),
+          headers
+      });
+
+      const responseObject = await response.json();
+
+      if(!response.ok){
+          alert(responseObject.msg);
+      } else {
+          alert(responseObject.msg);
+          location.reload()
+      }
+  } catch (error){
+      alert("something is wrong, try again later");
+      console.error(error);
+  }
+}
+
+
+//CREATE NEW REGION, COUNTRY, CITY
 
 //Create New region
 document.querySelector('#region-name-btn').addEventListener('click', async (ev)=>{
@@ -349,42 +510,6 @@ document.querySelector('#region-name-btn').addEventListener('click', async (ev)=
       console.error(error);
   }
 })
-
-//UPDATE region
- async function updateRegion(id) {
-   
-  const inputRegionName = document.getElementById('region-name-' + id);
-  const name = inputRegionName.value;
-
-  const token = localStorage.getItem('token');
-  const headers = new Headers();
-  headers.append('Content-Type',"application/json");
-  headers.append('Authorization', `Bearer ${token}`);
-  headers.append('Access-Control-Allow-Origin', '*');
-
-
-  //connection with backend (server.js)
-  try{
-      const response = await fetch('http://localhost:3000/regions/'+ id, {
-          method: 'PUT',
-          body: JSON.stringify({name}),
-          headers
-      });
-
-      const responseObject = await response.json();
-
-      if(!response.ok){
-          alert(responseObject.msg);
-      } else {
-          alert(responseObject.msg);
-          location.reload()
-      }
-  } catch (error){
-      alert("something is wrong, try again later");
-      console.error(error);
-  }
-}
-
 
 //Create New country
 document.querySelector('#coun-name-btn').addEventListener('click', async (ev)=>{
@@ -428,7 +553,7 @@ document.querySelector('#coun-name-btn').addEventListener('click', async (ev)=>{
 
 
 
-//Create New country
+//Create New city
 document.querySelector('#city-name-btn').addEventListener('click', async (ev)=>{
   ev.preventDefault();
 
@@ -469,7 +594,10 @@ document.querySelector('#city-name-btn').addEventListener('click', async (ev)=>{
   }
 })
 
-//////////MODAL region (funciona en un solo boton.)
+
+///////////////////////////MODALS REGION COUNTRY CITY
+
+//////////MODAL region 
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -498,7 +626,7 @@ window.onclick = function(event) {
 }
 
 
-//////////MODAL country (funciona en un solo boton.)
+//////////MODAL country 
 
 // Get the modal
 var modal2 = document.getElementById("myModal2");
@@ -527,7 +655,7 @@ window.onclick = function(event) {
 }
 
 
-//////////MODAL city (funciona en un solo boton.)
+//////////MODAL city 
 
 // Get the modal
 var modal3 = document.getElementById("myModal3");

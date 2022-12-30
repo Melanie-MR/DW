@@ -3,10 +3,12 @@
     margin-bottom: 50px;
     
 }
+
+/*FORM*/
 .form{
     background-color: rgb(177, 215, 226);
     width: 400px;
-    margin-left:32%;
+    margin-left: 35vw;
     border-radius: 9px;
     text-align:center;
     display:flex;
@@ -16,6 +18,10 @@
     box-shadow: 0 10px 25px rgba(106, 114, 119, 0.7);
 }
 
+.form-row{
+  display:flex;
+  flex-direction: row;
+}
 .create-title{
     font-family: 'Open Sans', sans-serif;
     font-size: 25px;
@@ -32,6 +38,8 @@
     flex-direction:column;
     margin-bottom: 10px;
     font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+
 }
 
 .form-group > input{
@@ -40,20 +48,77 @@
     border-radius: 2px;
     border:none;
     padding:5px;
+    font-size: 16px;
 }
 
-#login{
-    font-family: 'Open Sans', sans-serif;
-    margin-left: 35%;
+#submit-btn{
+    color:black;
     margin-bottom: 10px;
-    width: 100px;
-    height: 40px;
-    border:none;
-    border-radius: 8px;
-    background-color: #8EC7FC;
-    color:#FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
 }
 
-#login:hover{
+
+#submit-btn:hover{
     background-color: #0683F9;
+    color: white;
 }
+
+/*TABLE*/
+
+#users-title{
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+.container{
+    margin-top: 2%;
+}
+
+.bg-light{
+    font-size: 18px;
+}
+
+#users-table-body{
+        font-size: 17px;
+}
+
+/*MODAL STYLE*/
+
+.modal-content{
+  height: 300px;
+}
+  #asterisk{
+    color: RED;
+  }
+  .style-title-modal{
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .style-title-select{
+    margin-left: 1%;
+    font-size: 18px;
+    font-weight: 400;
+  
+  }
+  .input-width{
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .style-btn{
+    background-color: #1D72C2;
+    color: white;
+    width: 150px;
+    margin-left: 45vw;
+    margin-right: 10%;
+    font-size: 18px;
+  
+  }
+
+  .input-width{
+    width: 150px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  

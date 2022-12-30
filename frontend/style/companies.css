@@ -40,6 +40,24 @@
     background-color:rgba(196, 30, 30, 0.849);
 }
 
+/*TABLE*/
+
+
+.container{
+    margin-top: 2%;
+}
+
+.bg-light{
+    font-size: 18px;
+}
+
+#companies-table-body{
+        font-size: 17px;
+}
+
+
+
+
 /*Modal*/
 
 body{
@@ -64,10 +82,7 @@ body{
     box-shadow:none;
 }
 
-.green{
-    
-    color:green;
-}
+
 #contacts-table{
     margin: auto;
     width: 95vw;
@@ -117,13 +132,41 @@ body{
     margin-bottom: 10px;
     font-family: 'Open Sans', sans-serif;
 }
-.input-width{
-    width: 150px;
-}
+
 .form-row{
     display:flex;
     flex-direction: row;
 }
-#asterisk{
-    color: red;
-}
+
+.style-btn{
+    background-color: #1D72C2;
+    color: white;
+    width: 150px;
+    margin-left: 80%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+    font-size: 18px;
+  
+  }
+  /*MODAL STYLE*/
+  #asterisk{
+    color: RED;
+  }
+  .style-title-modal{
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .style-title-select{
+    margin-left: 1%;
+    font-size: 18px;
+    font-weight: 400;
+  
+  }
+  .input-width{
+    width: 150px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+

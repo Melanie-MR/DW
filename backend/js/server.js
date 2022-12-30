@@ -30,6 +30,92 @@ app.use(body_parser.json());
 
 ////////ENDPOINTS///////////
 
+//////////COMPANIES/////////
+
+//CREATE - ADD COMPANIES (create) 
+
+app.post("/companies", authUser,  async (req, res) => {
+    let name = req.body.name
+    let address = req.body.address
+    let email = req.body.email
+    let phone_number = req.body.phone_number
+    let cities_id = req.body.cities_id
+
+    //let description = req.body.description
+    
+    try {
+        const newCompany = await Companies.create({
+            name: name,
+            address: address,
+            email:email,
+            phone_number: phone_number,
+            cities_id:cities_id,
+        })
+        res.status(200).send({msg:'Company created successfully', newCompany});  
+    } catch (error) {
+        res.status(400).send({msg:'Something happened ' + error});  
+    }
+});
+
+
+//GET COMPANIES -- Read ALL COMPANIES.
+
+app.get('/companies', async (req, res) => { 
+    try {
+        const companies =  await Companies.findAll({
+            include: [{
+              model: Cities,
+              //required: true
+             }]
+          });
+        res.status(200).send({msg:'These are all the companies', companies});  
+    } catch (error) {
+        res.status(400).send({msg:'Something happened ' + error});  
+    }
+});
+
+//EDIT COMPANY 
+app.put("/companies/:id", async (req, res) => {
+    
+    const {name, address, email, phone_number, cities_id} = req.body;
+    const idParam = req.params.id;
+    const newCompany = await Companies.update(
+      {
+        name, 
+        address, 
+        email, 
+        phone_number, 
+        cities_id,
+      },
+      {
+        where: {
+          id: idParam,
+        },
+      }
+    );
+    res.status(201).send({msg:'Company updated successfully', newCompany});
+  });
+
+//DELETE COMPANY 
+app.delete('/companies/:id', authUser, isAdmin, async (req, res) => { 
+  let id = req.params.id
+  try {
+      const status =  await Companies.destroy({
+          where: {
+             id: id  
+          }
+      }) 
+      if (status == 0) {
+          res.status(404).send({msg: `There is not Company with the id ${id} to be eliminated`})
+      } else {
+          res.status(200).send({msg: "DELETED"});
+      }
+  } catch (error) {
+      res.status(400).send({msg:'Something happened ' + error});  
+  }
+});
+
+
 ///////CONTACTS///////////
 
 //Search contacts
@@ -40,7 +126,16 @@ app.use(body_parser.json());
 
 app.get('/contacts',authUser, async (req, res) => {
     try {
-        const contacts =  await Contacts.findAll();
+        const contacts =  await Contacts.findAll({
+            include: [{
+              model: Cities,
+              //required: true
+             },
+             {
+                model: Companies,
+                //required: true
+            }]
+          });
         res.status(200).send({msg:'These are all the contacts', contacts});  
     } catch (error) {
         res.status(400).send({msg:'Something happened ' + error});  
@@ -54,9 +149,7 @@ app.post("/contacts", authUser,  async (req, res) => {
     let lastname = req.body.lastname
     let position = req.body.position
     let email = req.body.email
-    let company = req.body.company
     let address = req.body.address
-    let country = req.body.country
     let cities_id = req.body.cities_id
     let companies_id = req.body.companies_id 
     let interest = req.body.interest
@@ -70,9 +163,7 @@ app.post("/contacts", authUser,  async (req, res) => {
             lastname: lastname,
             position:position,
             email:email,
-            company: company,
             address:address,
-            country: country,
             cities_id:cities_id,
             companies_id: companies_id,
             interest: interest
@@ -83,7 +174,52 @@ app.post("/contacts", authUser,  async (req, res) => {
     }
 });
 
+//EDIT CONTACTS 
+app.put("/contacts/:id", authUser, async (req, res) => {
+    
+    const {firstname, lastname, position, email, company, address, country, cities_id, companies_id, interest} = req.body;
+    const idParam = req.params.id;
+    const newContact = await Contacts.update(
+      {
+        firstname, 
+        lastname, 
+        position, 
+        email, 
+        company, 
+        address, 
+        country, 
+        cities_id, 
+        companies_id, 
+        interest,
+      },
+      {
+        where: {
+          id: idParam,
+        },
+      }
+    );
+    res.status(201).send({msg:'Contact updated successfully', newContact});
+  });
 
+//DELETE CONTACTS 
+app.delete('/contacts/:id', authUser, async (req, res) => { 
+  let id = req.params.id
+  console.log(req)
+  try {
+      const status =  await Contacts.destroy({
+          where: {
+             id: id  
+          }
+      }) 
+      if (status == 0) {
+          res.status(404).send({msg: `There is not Contact with the id ${id} to be eliminated`})
+      } else {
+          res.status(200).send({msg: "DELETED"});
+      }
+  } catch (error) {
+      res.status(400).send({msg:'Something happened ' + error});  
+  }
+});
 
 ///////USERS/////////////////
 
@@ -115,7 +251,77 @@ app.get('/users',authUser, isAdmin, async (req, res) => {
 });
 
 
+// CREATE Sign up new user (add user)
+app.post('/signup', authUser, isAdmin, validateSignup, validateUser, async(req, res) => {
 
+    const username = req.body.username;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const email = req.body.email;
+    const password = req.body.password;
+    var admin =  false;
+    if (req.body.profile == 'true' ) {
+      admin =  true
+    } 
+  
+    try {
+        const newUser = await Users.create({
+            username: username,
+            firstname : firstname,
+            lastname : lastname, 
+            email : email,
+            isAdmin: admin,
+            password : await bcrypt.hash(password, 5) //password encrypted
+        })
+        res.status(201).send({msg:'User created successfully', newUser});  
+    } catch (error) {
+        res.status(400).send({msg:'Something happened ' + error});  
+    }
+  });
+  
+  //EDIT USERS 
+  app.put("/users/:id", authUser, isAdmin, async (req, res) => {
+    
+      const { firstname, lastname, email, isAdmin, username} = req.body;
+      const password = await bcrypt.hash(req.body.password, 5);
+      const idParam = req.params.id;
+      const newUser = await Users.update(
+        {
+            firstname,
+            lastname,
+            email,
+            isAdmin,
+            username,
+            password
+          
+        },
+        {
+          where: {
+            id: idParam,
+          },
+        }
+      );
+      res.status(201).send({msg:'User updated successfully', newUser});
+    });
+  
+//DELETE USER 
+app.delete('/users/:id', authUser, isAdmin, async (req, res) => { 
+    let id = req.params.id
+    try {
+        const status =  await Users.destroy({
+            where: {
+               id: id  
+            }
+        }) 
+        if (status == 0) {
+            res.status(404).send({msg: `There is not User with the id ${id} to be eliminated`})
+        } else {
+            res.status(200).send({msg: "DELETED"});
+        }
+    } catch (error) {
+        res.status(400).send({msg:'Something happened ' + error});  
+    }
+});
 
 
 /////////////////////// REGIONS
@@ -309,34 +515,8 @@ app.delete('/cities/:id', authUser, isAdmin, async (req, res) => {
         res.status(400).send({msg:'Something happened ' + error});  
     }
 });
-////// USERS
-//Sign up new user (add user)
-app.post('/signup', authUser, isAdmin, validateSignup, validateUser, async(req, res) => {
 
-  const username = req.body.username;
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  const email = req.body.email;
-  const password = req.body.password;
-  var admin =  false;
-  if (req.body.profile == 'true' ) {
-    admin =  true
-  } 
 
-  try {
-      const newUser = await Users.create({
-          username: username,
-          firstname : firstname,
-          lastname : lastname, 
-          email : email,
-          isAdmin: admin,
-          password : await bcrypt.hash(password, 5) //password encrypted
-      })
-      res.status(201).send({msg:'User created successfully', newUser});  
-  } catch (error) {
-      res.status(400).send({msg:'Something happened ' + error});  
-  }
-});
 
 ///////////////////VALIDATE FUNCTIONS/////////////////// 
 

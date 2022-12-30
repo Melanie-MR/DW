@@ -29,7 +29,7 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="contacts.html"><h1 class="nav-font" id="demo">Contacts</h1></a></li>
                   <li><a href="#"><h1 class="nav-font">Companies</h1></a></li>
-                  <li><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
+                  <li id="usersHide" class="hidden"><a href="users.html"><h1 class="nav-font">Users</h1></a></li>
                   <li><a href="region.html"><h1 class="nav-font">Region/City</h1></a></li>
                   <script>
                     document.getElementById("demo").onmouseover = function() {mouseOver()};
@@ -63,77 +63,32 @@
                     </div>
                  
       <!-- Table -->
-      <div class="container mt-5 px-2">
+
+      <div class="container mt-5 px-2" id="companies-table">
 
           <div class="table-responsive">
           <table class="table table-responsive table-borderless">
               
             <thead>
               <tr class="bg-light">
-                <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
-                <th scope="col" width="5%">#</th>
+                <th scope="col" width="2%"><input class="form-check-input" type="checkbox"></th>
+                <th scope="col" width="2%">#</th>
                 <th scope="col" width="20%">Name</th>
-                <th scope="col" width="10%">Country</th>
-                <th scope="col" width="20%">Address</th>
-                <th scope="col" class="text-end" width="20%">Actions</th>
+                <th scope="col" width="15%">Address</th>
+                <th scope="col" width="20%">Email</th>
+                <th scope="col" width="15%">Phone Number</th>
+                <th scope="col" width="10%">City</th>
+                <th scope="col" class="text-end" width="30%">Actions</th>
               </tr>
             </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><input class="form-check-input" type="checkbox"></th>
-            <td>12</td>
-            <td>Sofia Ruth</td>
-            <td><span class="ms-1">Argentina</span></td>
-            <td>Callao 678</td>
-            <td class="text-end"><button>Edit</button><button>Delete</button></td>
-          </tr>
-          
-          <tr>
-            <th scope="row"><input class="form-check-input" type="checkbox"></th>
-            <td>14</td>
-            <td>Rodolfo Peña</td>
-            <td><span class="ms-1">Argentina</span></td>
-            <td>Independencia 3554</td>
-            <td class="text-end"><button>Edit</button><button>Delete</button></td>
-          </tr>
-          
-          
-          <tr>
-            <th scope="row"><input class="form-check-input" type="checkbox"></th>
-            <td>17</td>
-            <td>Matias Centeno</td>
-            <td><span class="ms-1">Argentina</span></td>
-            <td>Juramento 300</td>
-            <td class="text-end"><button>Edit</button><button>Delete</button></td>
-          </tr>
-          
-          
-          <tr>
-            <th scope="row"><input class="form-check-input" type="checkbox"></th>
-            <td>90</td>
-            <td>Angela Gutierrez</td>
-            <td><span class="ms-1">Argentina</span></td>
-            <td>Corrientes 3000</td>
-            <td class="text-end"><button>Edit</button><button>Delete</button></td>
-          </tr>
-          
-          
-          <tr>
-            <th scope="row"><input class="form-check-input" type="checkbox"></th>
-            <td>12</td>
-            <td>Maria Catalan</td>
-            <td><span class="ms-1">Argentina</span></td>
-            <td>Congreso 1744</td>
-            <td class="text-end"><button>Edit</button><button>Delete</button></td>
-          </tr>
-        </tbody>
+        <tbody id="companies-table-body"></tbody>
       </table>
-        
-        </div>
-          
-      </div>
-      <!-- End Table -->
-<!-- Modal -->
+    </div>
+  </div>
+<!-- End Table -->
+
+
+<!-- Modal NEW COMPANY-->
 
 <div id="myModal" class="modal modal-xl">
 
@@ -141,40 +96,87 @@
   <div class="modal-content">
       <div class="modal-header"> 
           <h1 class="modal-title" id="staticBackdropLabel">New Company</h1>
-          <span class="close">&times;</span> 
+          <span id="close" class="close">&times;</span> 
       </div>  
       <div class="modal-body">
         <form action="" class="form-row">
               <div class="form-contacts">
-                  <label for="first-name">Name <span id="asterisk" >*</span></label>
-                  <input type="input" autocomplete="off" name="user" id="first-name" class="input-width" placeholder="Company's name" required>
+                  <label class= "style-title-modal" for="name">Name <span id="asterisk" >*</span></label>
+                  <input type="input" autocomplete="off" name="user" id="name" class="input-width" placeholder="Company's name" required>
               </div>
          
               <div class="form-contacts">
-                  <label for="address">Address <span id="asterisk" >*</span></label>
+                  <label class= "style-title-modal" for="address">Address <span id="asterisk" >*</span></label>
                   <input type="input" autocomplete="off" name="address" id="address" class="input-width" placeholder="Company's Address"  required>
               </div>
               <div class="form-contacts">
-                <label for="email">Email <span id="asterisk" >*</span></label>
-                <input type="input" autocomplete="off" name="email" id="email" class="input-width" placeholder="email" required>
+                <label class= "style-title-modal" for="email">Email <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="email" id="email" class="input-width" placeholder="Email" required>
               </div>
               <div class="form-contacts">
-                <label for="phone">Phone number <span id="asterisk" >*</span></label>
-                <input type="input" autocomplete="off" name="phone" id="phone" class="input-width" placeholder="phone number"  required>
+                <label class= "style-title-modal" for="phone">Phone number <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="phone" id="phone" class="input-width" placeholder="Phone number"  required>
               </div>
               <div class="form-contacts">
-                <label for="city">City <span id="asterisk" >*</span></label>
-                <input type="input" autocomplete="off" name="city" id="city" class="input-width" placeholder="City"  required>
+                <label for="select-country-cities" class="style-title-modal">City <span id="asterisk" >*</span></label>
+                <select class="form-select style-title-select" id="select-country-cities">
+                  <option selected>Select City</option>
+              </select>
               </div>
         </form>
       </div>
   <div>
-          <input name="login" id="login" class="btn btn-block login-btn" type="submit" value="Create">
+          <input name="company-name-btn" id="company-name-btn" class="btn login-btn style-btn" type="click" value="Create">
       </div>         
-  <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-primary">Save Company</button>
-  </div>  
+
+  </div>    
+</div>
+<!-- Modal UPDATE COMPANY-->
+
+<div id="myModal2" class="modal modal-xl">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+      <div class="modal-header"> 
+          <h1 class="modal-title" id="staticBackdropLabel">Company Update</h1>
+          <span id="close2" class="close">&times;</span> 
+      </div>  
+      <div class="modal-body"> 
+        <form action="" class="form-row">
+              <div class="form-contacts hidden">
+                <label class= "style-title-modal" for="id-update">ID <span id="asterisk">*</span>
+                </label>
+                <input type="input" autocomplete="off" name="id-update" id="id-update" class="input-width" required>
+              </div>
+              <div class="form-contacts">
+                  <label class= "style-title-modal" for="name-update">Name <span id="asterisk" >*</span></label>
+                  <input type="input" autocomplete="off" name="name-update" id="name-update" class="input-width" placeholder="Company's name" required>
+              </div>
+         
+              <div class="form-contacts">
+                  <label class= "style-title-modal" for="address-update">Address <span id="asterisk" >*</span></label>
+                  <input type="input" autocomplete="off" name="address-update" id="address-update" class="input-width" placeholder="Company's Address"  required>
+              </div>
+              <div class="form-contacts">
+                <label class= "style-title-modal" for="email-update">Email <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="email-update" id="email-update" class="input-width" placeholder="Email" required>
+              </div>
+              <div class="form-contacts">
+                <label class= "style-title-modal" for="phone-update">Phone number <span id="asterisk" >*</span></label>
+                <input type="input" autocomplete="off" name="phone-update" id="phone-update" class="input-width" placeholder="Phone number"  required>
+              </div>
+              <div class="form-contacts">
+                <label for="select-country-cities" class="style-title-modal">City <span id="asterisk" >*</span></label>
+                <select class="form-select style-title-select" id="select-country-cities-update">
+                  <option selected>Select City</option>
+              </select>
+              </div>
+        </form>
+      </div>
+  <div>
+          <input name="company-name-btn" id="company-name-btn" class="btn login-btn style-btn" type="click" value="Update" onclick="updateCompany()">
+      </div>         
+
   </div>    
 </div>
   

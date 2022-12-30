@@ -1,3 +1,5 @@
+
+
 document.querySelector('#login-form').addEventListener('submit', async (ev)=>{
     ev.preventDefault();
 
@@ -19,7 +21,7 @@ document.querySelector('#login-form').addEventListener('submit', async (ev)=>{
         if(responseLogin.status != 200){
             alert(responseObject.error);
         } else {
-
+    
             localStorage.setItem('token', responseObject.token);
             localStorage.setItem('isAdmin', responseObject.isAdmin);
             location.href = 'contacts.html';  
